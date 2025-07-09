@@ -53,7 +53,7 @@ const renderSongPreview = () => {
   return h(
     'div',
     {
-      class: 'flex items-center gap-3 px-2 dark:border-gray-800 dark:text-white'
+      class: 'flex items-center gap-3 px-2 dark:border-neutral-800 dark:text-white'
     },
     [
       h(NImage, {
@@ -93,7 +93,7 @@ const renderSongPreview = () => {
           h(
             'div',
             {
-              class: 'text-xs text-gray-500 dark:text-gray-400 overflow-hidden'
+              class: 'text-xs text-neutral-500 dark:text-neutral-400 overflow-hidden'
             },
             [
               h(
@@ -164,7 +164,7 @@ const dropdownOptions = computed<MenuOption[]>(() => {
     {
       label: props.isDislike ? t('songItem.menu.undislike') : t('songItem.menu.dislike'),
       key: 'dislike',
-      icon: () => h('i', { class: `iconfont ${props.isDislike ? 'ri-dislike-fill text-green-500': 'ri-dislike-line'}` })
+      icon: () => h('i', { class: `iconfont ${props.isDislike ? 'ri-dislike-fill text-primary': 'ri-dislike-line'}` })
     },
   ];
 
@@ -219,13 +219,13 @@ const handleSelect = (key: string | number) => {
 
 <style lang="scss" scoped>
 :deep(.n-dropdown-menu) {
-  @apply min-w-[240px] overflow-hidden rounded-lg border dark:border-gray-800;
+  @apply min-w-[240px] overflow-hidden rounded-lg border dark:border-neutral-800;
 
   .n-dropdown-option {
     @apply h-9 text-sm;
 
     &:hover {
-      @apply bg-gray-100 dark:bg-gray-800;
+      @apply bg-neutral-100 dark:bg-neutral-800;
     }
 
     .n-dropdown-option-body {

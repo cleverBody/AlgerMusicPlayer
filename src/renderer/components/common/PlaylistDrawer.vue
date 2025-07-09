@@ -265,10 +265,10 @@ watch(
 
 .create-playlist-button {
   @apply flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all duration-200
-         bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700;
+         bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700;
 
   &.is-expanded {
-    @apply bg-gray-100 dark:bg-gray-700;
+    @apply bg-neutral-100 dark:bg-neutral-700;
 
     .create-playlist-icon {
       transform: rotate(45deg);
@@ -276,8 +276,9 @@ watch(
   }
 
   &-icon {
-    @apply w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center text-white
+    @apply w-10 h-10 rounded-xl flex items-center justify-center text-white
            transition-all duration-300;
+    background-color: #00d4aa;
 
     .iconfont {
       @apply text-xl transition-transform duration-300;
@@ -299,20 +300,25 @@ watch(
   .mac-style-input {
     @apply rounded-lg;
     :deep(.n-input-wrapper) {
-      @apply bg-gray-50 dark:bg-gray-800 border-0;
+      @apply bg-neutral-50 dark:bg-neutral-800 border-0;
     }
     :deep(.n-input__input) {
       @apply text-sm;
     }
     :deep(.n-input__prefix) {
-      @apply text-gray-400;
+      @apply text-neutral-400;
     }
   }
 
   .form-actions {
     @apply mt-4;
     .mac-style-button {
-      @apply w-full rounded-lg text-sm py-2 bg-green-500 hover:bg-green-600 text-white;
+      @apply w-full rounded-lg text-sm py-2 text-white;
+      background-color: #00d4aa;
+      
+      &:hover {
+        background-color: #00d4aa;
+      }
     }
   }
 }
@@ -324,7 +330,7 @@ watch(
     @apply flex items-center gap-2;
 
     .iconfont {
-      @apply text-base text-gray-500 dark:text-gray-400;
+      @apply text-base text-neutral-500 dark:text-neutral-400;
     }
     span {
       @apply text-sm;
@@ -342,7 +348,7 @@ watch(
 
 .playlist-item {
   @apply flex items-center gap-3 p-2 rounded-xl cursor-pointer transition-all duration-200
-         hover:bg-gray-50 dark:hover:bg-gray-800;
+         hover:bg-neutral-50 dark:hover:bg-neutral-800;
 
   &-img {
     @apply w-10 h-10 rounded-xl;
@@ -357,12 +363,16 @@ watch(
   }
 
   &-count {
-    @apply text-xs text-gray-500 dark:text-gray-400;
+    @apply text-xs text-neutral-500 dark:text-neutral-400;
   }
 
   &-action {
     @apply w-8 h-8 rounded-lg flex items-center justify-center
-           text-gray-400 hover:text-green-500 transition-colors duration-200;
+           text-neutral-400 transition-colors duration-200;
+           
+    &:hover {
+      color: #00d4aa;
+    }
 
     .iconfont {
       @apply text-xl;

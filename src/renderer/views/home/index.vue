@@ -53,7 +53,7 @@ defineOptions({
   .favorite-header {
     @apply mb-0 px-0 !important;
     h2 {
-      @apply text-lg font-bold text-gray-900 dark:text-white;
+      @apply text-lg font-bold text-neutral-900 dark:text-white;
     }
   }
   .favorite-list {

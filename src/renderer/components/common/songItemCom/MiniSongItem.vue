@@ -37,7 +37,7 @@
     <template #content>
       <div class="song-item-content">
         <div class="song-item-content-title">
-          <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-green-500': isPlaying }">
+          <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-primary': isPlaying }">
             {{ item.name }}
           </n-ellipsis>
         </div>
@@ -45,7 +45,7 @@
           <n-ellipsis class="text-ellipsis" line-clamp="1">
             <template v-for="(artist, index) in artists" :key="index">
               <span
-                class="cursor-pointer hover:text-green-500"
+                class="cursor-pointer hover:text-primary"
                 @click.stop="onArtistClick(artist.id)"
                 >{{ artist.name }}</span
               >
@@ -67,8 +67,8 @@
           ></i>
         </div>
         <div
-          class="song-item-operating-play bg-gray-300 dark:bg-gray-800 animate__animated"
-          :class="{ 'bg-green-600': isPlaying, 'animate__flipInY': playLoading }"
+          class="song-item-operating-play bg-neutral-300 dark:bg-neutral-800 animate__animated"
+          :class="{ 'bg-primary': isPlaying, 'animate__flipInY': playLoading }"
           @click="onPlayMusic"
         >
           <i v-if="isPlaying && play" class="iconfont icon-stop"></i>
@@ -152,16 +152,16 @@ const onPlayMusic = () => {
     @apply flex-1;
 
     &-title {
-      @apply text-sm text-gray-900 dark:text-white;
+      @apply text-sm text-neutral-900 dark:text-white;
     }
 
     &-name {
-      @apply text-xs text-gray-500 dark:text-gray-400;
+      @apply text-xs text-neutral-500 dark:text-neutral-400;
     }
   }
 
   .song-item-operating {
-    @apply flex items-center rounded-full ml-4 pl-2 border dark:border-gray-700 border-gray-200 bg-light dark:bg-black;
+    @apply flex items-center rounded-full ml-4 pl-2 border dark:border-neutral-700 border-neutral-200 bg-light dark:bg-black;
 
     .iconfont {
       @apply text-base;
@@ -171,7 +171,7 @@ const onPlayMusic = () => {
       @apply mr-1 ml-1 cursor-pointer;
       
       .icon-likefill {
-        @apply text-base transition text-gray-500 dark:text-gray-400 hover:text-red-500;
+        @apply text-base transition text-neutral-500 dark:text-neutral-400 hover:text-red-500;
       }
       
       .like-active {
@@ -181,11 +181,18 @@ const onPlayMusic = () => {
 
     &-play {
       @apply cursor-pointer rounded-full w-8 h-8 flex justify-center items-center transition
-             border dark:border-gray-700 border-gray-200 text-gray-900 dark:text-white;
+             border dark:border-neutral-700 border-neutral-200 text-neutral-900 dark:text-white;
 
-      &:hover,
-      &.bg-green-600 {
-        @apply bg-green-500 border-green-500 text-white;
+      &:hover {
+        background-color: #00d4aa;
+        border-color: #00d4aa;
+        color: white;
+      }
+      
+      &.bg-primary {
+        background-color: #00d4aa;
+        border-color: #00d4aa;
+        color: white;
       }
     }
   }

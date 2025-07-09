@@ -590,11 +590,11 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .music {
   &-title {
-    @apply text-xl font-bold text-gray-900 dark:text-white;
+    @apply text-xl font-bold text-neutral-900 dark:text-white;
   }
 
   &-total {
-    @apply text-sm font-normal text-gray-500 dark:text-gray-400;
+    @apply text-sm font-normal text-neutral-500 dark:text-neutral-400;
   }
 
   &-page {
@@ -603,7 +603,7 @@ onUnmounted(() => {
   }
 
   &-close {
-    @apply cursor-pointer text-gray-500 dark:text-white hover:text-gray-900 dark:hover:text-gray-300 flex gap-2 items-center transition;
+    @apply cursor-pointer text-neutral-500 dark:text-white hover:text-neutral-900 dark:hover:text-neutral-300 flex gap-2 items-center transition;
     .icon {
       @apply text-3xl;
     }
@@ -626,12 +626,12 @@ onUnmounted(() => {
     .creator-info {
       @apply flex items-center mb-4;
       .creator-name {
-        @apply ml-2 text-gray-700 dark:text-gray-300;
+        @apply ml-2 text-neutral-700 dark:text-neutral-300;
       }
     }
 
     .music-desc {
-      @apply text-sm text-gray-600 dark:text-gray-400 leading-relaxed pr-4;
+      @apply text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pr-4;
     }
   }
 
@@ -655,12 +655,12 @@ onUnmounted(() => {
   }
 
   .icon {
-    @apply text-gray-500 dark:text-gray-400;
+    @apply text-neutral-500 dark:text-neutral-400;
   }
 }
 
 .no-result {
-  @apply text-center py-8 text-gray-500 dark:text-gray-400;
+  @apply text-center py-8 text-neutral-500 dark:text-neutral-400;
 }
 
 /* 虚拟列表样式 */
@@ -671,7 +671,7 @@ onUnmounted(() => {
       width: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      @apply bg-gray-400 dark:bg-gray-600 rounded;
+      @apply bg-neutral-400 dark:bg-neutral-600 rounded;
     }
   }
 }
@@ -711,7 +711,7 @@ onUnmounted(() => {
 }
 
 .loading-more {
-  @apply text-center py-4 text-gray-500 dark:text-gray-400;
+  @apply text-center py-4 text-neutral-500 dark:text-neutral-400;
 }
 
 .double-item {

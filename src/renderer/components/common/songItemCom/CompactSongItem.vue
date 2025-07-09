@@ -14,7 +14,7 @@
   >
     <!-- 索引插槽 -->
     <template #index>
-      <div v-if="index !== undefined" class="song-item-index" :class="{ 'text-green-500': isPlaying }">
+      <div v-if="index !== undefined" class="song-item-index" :class="{ 'text-primary-custom': isPlaying }">
         {{ index + 1 }}
       </div>
     </template>
@@ -31,7 +31,7 @@
       <div class="song-item-content-compact">
         <div class="song-item-content-compact-wrapper">
           <div class="song-item-content-compact-title w-60 flex-shrink-0">
-            <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-green-500': isPlaying }">
+            <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-primary-custom': isPlaying }">
               {{ item.name }}
             </n-ellipsis>
           </div>
@@ -39,7 +39,10 @@
             <n-ellipsis line-clamp="1">
               <template v-for="(artist, index) in artists" :key="index">
                 <span
-                  class="cursor-pointer hover:text-green-500"
+                  class="cursor-pointer"
+                  style="color: #00d4aa;"
+                  @mouseover="($event.target as HTMLElement).style.color = '#00d4aa'"
+                  @mouseout="($event.target as HTMLElement).style.color = ''"
                   @click.stop="onArtistClick(artist.id)"
                   >{{ artist.name }}</span
                 >
@@ -69,7 +72,7 @@
         </div>
         <div
           class="song-item-operating-play animate__animated"
-          :class="{ 'bg-green-600': isPlaying, 'animate__flipInY': playLoading, 'opacity-0': !isHovering && !isPlaying }"
+          :class="{ 'bg-primary-custom': isPlaying, 'animate__flipInY': playLoading, 'opacity-0': !isHovering && !isPlaying }"
           @click="onPlayMusic"
         >
           <i v-if="isPlaying && play" class="iconfont icon-stop"></i>
@@ -156,10 +159,10 @@ const formatDuration = (ms: number): string => {
 
 <style lang="scss" scoped>
 .compact-song-item {
-  @apply rounded-lg p-2 h-12 mb-1 border-b dark:border-gray-800 border-gray-100;
+  @apply rounded-lg p-2 h-12 mb-1 border-b dark:border-neutral-800 border-neutral-100;
 
   &:hover {
-    @apply bg-gray-50 dark:bg-gray-700;
+    @apply bg-neutral-50 dark:bg-neutral-700;
 
     .opacity-0 {
       opacity: 1;
@@ -167,7 +170,7 @@ const formatDuration = (ms: number): string => {
   }
 
   .song-item-index {
-    @apply w-8 text-center text-gray-500 dark:text-gray-400 text-sm;
+    @apply w-8 text-center text-neutral-500 dark:text-neutral-400 text-sm;
   }
 
   .song-item-select {
@@ -182,19 +185,19 @@ const formatDuration = (ms: number): string => {
     }
 
     &-title {
-      @apply text-sm cursor-pointer text-gray-900 dark:text-white flex items-center;
+      @apply text-sm cursor-pointer text-neutral-900 dark:text-white flex items-center;
     }
 
     &-artist {
-      @apply w-40 text-sm text-gray-500 dark:text-gray-400 ml-2 flex items-center;
+      @apply w-40 text-sm text-neutral-500 dark:text-neutral-400 ml-2 flex items-center;
     }
 
     &-album {
-      @apply w-32 flex items-center text-sm text-gray-500 dark:text-gray-400;
+      @apply w-32 flex items-center text-sm text-neutral-500 dark:text-neutral-400;
     }
 
     &-duration {
-      @apply w-16 flex items-center text-sm text-gray-500 dark:text-gray-400 text-right;
+      @apply w-16 flex items-center text-sm text-neutral-500 dark:text-neutral-400 text-right;
     }
   }
 
@@ -208,11 +211,13 @@ const formatDuration = (ms: number): string => {
     }
 
     .song-item-operating-play {
-      @apply w-7 h-7 flex items-center justify-center cursor-pointer rounded-full bg-gray-300 dark:bg-gray-800 border dark:border-gray-700 border-gray-200 text-gray-900 dark:text-white;
+      @apply w-7 h-7 flex items-center justify-center cursor-pointer rounded-full bg-neutral-300 dark:bg-neutral-800 border dark:border-neutral-700 border-neutral-200 text-neutral-900 dark:text-white;
 
       &:hover,
-      &.bg-green-600 {
-        @apply bg-green-500 border-green-500 text-white;
+      &.bg-primary-custom {
+        background-color: #00d4aa;
+        border-color: #00d4aa;
+        @apply text-white;
       }
 
       .iconfont {
@@ -224,7 +229,7 @@ const formatDuration = (ms: number): string => {
       @apply mr-1 ml-0 cursor-pointer;
 
       .iconfont {
-        @apply text-base transition text-gray-500 dark:text-gray-400 hover:text-red-500;
+        @apply text-base transition text-neutral-500 dark:text-neutral-400 hover:text-red-500;
       }
       .like-active {
         @apply text-red-500 dark:text-red-500;
@@ -235,7 +240,11 @@ const formatDuration = (ms: number): string => {
       @apply cursor-pointer flex items-center justify-center px-2;
 
       .iconfont {
-        @apply text-xl transition text-gray-500 dark:text-gray-400 hover:text-green-500;
+        @apply text-xl transition text-neutral-500 dark:text-neutral-400;
+        
+        &:hover {
+          color: #00d4aa;
+        }
       }
     }
 
@@ -248,5 +257,10 @@ const formatDuration = (ms: number): string => {
 // 全局应用
 :deep(.text-ellipsis) {
   width: 100%;
+}
+
+// 自定义 text-primary 样式
+.text-primary-custom {
+  color: #00d4aa;
 }
 </style> 

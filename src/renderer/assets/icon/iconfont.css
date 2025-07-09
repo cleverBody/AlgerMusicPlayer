@@ -12,6 +12,58 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.iconfont:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(0, 212, 170, 0.3));
+}
+
+.iconfont.icon-primary {
+  color: #00d4aa;
+}
+
+.iconfont.icon-secondary {
+  color: #6366f1;
+}
+
+.iconfont.icon-accent {
+  color: #f59e0b;
+}
+
+.iconfont.icon-success {
+  color: #10b981;
+}
+
+.iconfont.icon-warning {
+  color: #f59e0b;
+}
+
+.iconfont.icon-error {
+  color: #ef4444;
+}
+
+.iconfont.icon-large {
+  font-size: 24px;
+}
+
+.iconfont.icon-small {
+  font-size: 14px;
+}
+
+.iconfont.icon-animated {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .icon-list:before {

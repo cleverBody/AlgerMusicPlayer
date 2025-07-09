@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import viteCompression from 'vite-plugin-compression';
-import VueDevTools from 'vite-plugin-vue-devtools';
 
 export default defineConfig({
   main: {
@@ -24,7 +23,8 @@ export default defineConfig({
     plugins: [
       vue(),
       viteCompression(),
-      VueDevTools(),
+      // Vue DevTools 已禁用 - 如需启用请取消注释下一行
+      // VueDevTools(),
       AutoImport({
         imports: [
           'vue',

@@ -132,6 +132,22 @@ onMounted(async () => {
 .app-container {
   @apply h-full w-full;
   user-select: none;
+  /* 清新风格标识 - 如果看到这个边框说明样式已生效 */
+  border: 3px solid transparent;
+  border-image: linear-gradient(45deg, #00d4aa, #6366f1) 1;
+  position: relative;
+}
+
+.app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #00d4aa22, #6366f122);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .mobile {

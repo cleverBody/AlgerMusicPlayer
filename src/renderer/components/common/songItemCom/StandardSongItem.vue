@@ -37,13 +37,16 @@
     <template #content>
       <div class="song-item-content">
         <div class="song-item-content-title">
-          <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-green-500': isPlaying }">{{ item.name }}</n-ellipsis>
+          <n-ellipsis class="text-ellipsis" line-clamp="1" :class="{ 'text-primary-custom': isPlaying }">{{ item.name }}</n-ellipsis>
         </div>
         <div class="song-item-content-name">
           <n-ellipsis class="text-ellipsis" line-clamp="1">
             <template v-for="(artist, index) in artists" :key="index">
               <span
-                class="cursor-pointer hover:text-green-500"
+                class="cursor-pointer"
+                style="color: #00d4aa;"
+                @mouseover="($event.target as HTMLElement).style.color = '#00d4aa'"
+                @mouseout="($event.target as HTMLElement).style.color = ''"
                 @click.stop="onArtistClick(artist.id)"
                 >{{ artist.name }}</span
               >
@@ -73,8 +76,8 @@
           {{ t('songItem.menu.playNext') }}
         </n-tooltip>
         <div
-          class="song-item-operating-play bg-gray-300 dark:bg-gray-800 animate__animated"
-          :class="{ 'bg-green-600': isPlaying, 'animate__flipInY': playLoading }"
+          class="song-item-operating-play bg-neutral-300 dark:bg-neutral-800 animate__animated"
+          :class="{ 'bg-primary-custom': isPlaying, 'animate__flipInY': playLoading }"
           @click="onPlayMusic"
         >
           <i v-if="isPlaying && play" class="iconfont icon-stop"></i>
@@ -160,23 +163,23 @@ const onPlayNext = () => {
     @apply flex-1;
 
     &-title {
-      @apply text-base text-gray-900 dark:text-white;
+      @apply text-base text-neutral-900 dark:text-white;
     }
 
     &-name {
-      @apply text-xs text-gray-500 dark:text-gray-400;
+      @apply text-xs text-neutral-500 dark:text-neutral-400;
     }
   }
 
   .song-item-operating {
-    @apply flex items-center rounded-full ml-4 border dark:border-gray-700 border-gray-200 bg-light dark:bg-black;
+    @apply flex items-center rounded-full ml-4 border dark:border-neutral-700 border-neutral-200 bg-light dark:bg-black;
 
     .iconfont {
       @apply text-xl;
     }
 
     .icon-likefill {
-      @apply text-xl transition text-gray-500 dark:text-gray-400 hover:text-red-500;
+      @apply text-xl transition text-neutral-500 dark:text-neutral-400 hover:text-red-500;
     }
 
     &-like {
@@ -187,7 +190,11 @@ const onPlayNext = () => {
       @apply mr-2 cursor-pointer transition-all;
       
       .iconfont {
-        @apply text-xl transition text-gray-500 dark:text-gray-400 hover:text-green-500;
+        @apply text-xl transition text-neutral-500 dark:text-neutral-400;
+        
+        &:hover {
+          color: #00d4aa;
+        }
       }
     }
 
@@ -197,11 +204,13 @@ const onPlayNext = () => {
 
     &-play {
       @apply cursor-pointer rounded-full w-10 h-10 flex justify-center items-center transition
-             border dark:border-gray-700 border-gray-200 text-gray-900 dark:text-white;
+             border dark:border-neutral-700 border-neutral-200 text-neutral-900 dark:text-white;
 
       &:hover,
-      &.bg-green-600 {
-        @apply bg-green-500 border-green-500 text-white;
+      &.bg-primary-custom {
+        background-color: #00d4aa;
+        border-color: #00d4aa;
+        @apply text-white;
       }
     }
   }
@@ -209,5 +218,10 @@ const onPlayNext = () => {
   .song-item-select {
     @apply mr-3 cursor-pointer;
   }
+}
+
+// 自定义 text-primary 样式
+.text-primary-custom {
+  color: #00d4aa;
 }
 </style> 

@@ -1,3 +1,5 @@
+import './assets/css/base.css';
+import './assets/icon/iconfont.css';
 import './index.css';
 import 'animate.css';
 import 'remixicon/fonts/remixicon.css';

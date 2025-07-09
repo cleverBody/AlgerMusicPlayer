@@ -344,9 +344,10 @@ const toGithubRelease = () => {
 }
 
 .user-box {
-  @apply ml-4 flex text-lg justify-center items-center rounded-full transition-colors duration-200;
-  @apply border dark:border-gray-600 border-gray-200 hover:border-gray-400 dark:hover:border-gray-400;
-  @apply bg-light dark:bg-gray-800;
+  @apply ml-4 flex text-lg justify-center items-center rounded-full transition-all duration-200;
+  @apply border border-primary-200 dark:border-primary-700 hover:border-primary-300 dark:hover:border-primary-600;
+  @apply bg-white/70 dark:bg-dark-100/70 backdrop-blur-sm hover:bg-white/90 dark:hover:bg-dark-100/90;
+  @apply shadow-sm hover:shadow-md;
 }
 
 .search-box {
@@ -357,14 +358,33 @@ const toGithubRelease = () => {
   @apply relative;
 
   :deep(.n-input) {
-    @apply bg-gray-50 dark:bg-black;
+    @apply bg-white/80 dark:bg-dark-100/80 backdrop-blur-md border-2;
+    border-color: #00d4aa !important;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 212, 170, 0.1);
+
+    &:hover {
+      @apply bg-white/90 dark:bg-dark-100/90;
+      border-color: #33e2c0 !important;
+      box-shadow: 0 8px 30px rgba(0, 212, 170, 0.2);
+      transform: translateY(-1px);
+    }
+
+    &:focus-within {
+      @apply bg-white dark:bg-dark-100;
+      border-color: #00a688 !important;
+      box-shadow: 0 0 0 4px rgba(0, 212, 170, 0.2);
+      transform: translateY(-2px);
+    }
 
     .n-input__input-el {
-      @apply text-gray-900 dark:text-white;
+      @apply text-neutral-800 dark:text-neutral-100 font-medium;
     }
 
     .n-input__prefix {
-      @apply text-gray-500 dark:text-gray-400;
+      color: #00d4aa !important;
+      font-size: 18px;
     }
   }
 }
@@ -376,21 +396,24 @@ const toGithubRelease = () => {
 }
 
 .github {
-  @apply cursor-pointer text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 text-xl ml-4 rounded-full flex justify-center items-center px-2 h-full;
-  @apply border dark:border-gray-600 border-gray-200 bg-light dark:bg-black;
+  @apply cursor-pointer text-neutral-800 dark:text-neutral-100 hover:text-primary-600 dark:hover:text-primary-400 text-xl ml-4 rounded-full flex justify-center items-center px-2 h-full;
+  @apply border border-primary-200 dark:border-primary-700 bg-white/70 dark:bg-dark-100/70 backdrop-blur-sm;
+  @apply hover:bg-white/90 dark:hover:bg-dark-100/90 hover:border-primary-300 dark:hover:border-primary-600;
+  @apply shadow-sm hover:shadow-md transition-all duration-200;
 }
 
 .user-popover {
   @apply min-w-[220px] p-0 rounded-xl overflow-hidden;
-  @apply bg-light dark:bg-black;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  @apply bg-white/95 dark:bg-dark-100/95 backdrop-blur-md;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.2);
 
   .user-header {
     @apply flex items-center gap-2 p-3 cursor-pointer;
-    @apply border-b dark:border-gray-700 border-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700;
+    @apply border-b border-primary-100 dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900/20;
 
     .username {
-      @apply text-sm font-medium text-gray-900 dark:text-gray-200;
+      @apply text-sm font-medium text-neutral-800 dark:text-neutral-200;
     }
   }
 
@@ -399,15 +422,15 @@ const toGithubRelease = () => {
 
     .menu-item {
       @apply flex items-center px-3 py-1 text-sm cursor-pointer;
-      @apply text-gray-700 dark:text-gray-300;
-      transition: background-color 0.2s;
+      @apply text-neutral-700 dark:text-neutral-300;
+      transition: all 0.2s ease;
 
       &:hover {
-        @apply bg-gray-100 dark:bg-gray-700;
+        @apply bg-primary-50 dark:bg-primary-900/20;
       }
 
       i {
-        @apply mr-1 text-lg text-gray-500 dark:text-gray-400;
+        @apply mr-1 text-lg text-primary-600 dark:text-primary-400;
       }
 
       .version-info {
@@ -415,7 +438,7 @@ const toGithubRelease = () => {
 
         .version-number {
           @apply text-xs px-2 py-0.5 rounded;
-          @apply bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300;
+          @apply bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300;
         }
       }
       
@@ -425,13 +448,13 @@ const toGithubRelease = () => {
         
         .zoom-value {
           @apply text-xs px-2 py-0.5 rounded cursor-pointer;
-          @apply bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300;
-          @apply hover:bg-gray-200 dark:hover:bg-gray-600;
+          @apply bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300;
+          @apply hover:bg-primary-200 dark:hover:bg-primary-700;
           transition: all 0.2s ease;
           
           &.zoom-100 {
-            @apply bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 font-bold;
-            @apply hover:bg-green-200 dark:hover:bg-green-800;
+            @apply bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 font-bold;
+            @apply hover:bg-secondary-200 dark:hover:bg-secondary-700;
           }
         }
       }

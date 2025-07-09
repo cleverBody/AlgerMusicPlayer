@@ -135,11 +135,18 @@ provide('openPlaylistDrawer', openPlaylistDrawer);
 
 <style lang="scss" scoped>
 .layout-page {
-  @apply w-screen h-screen overflow-hidden bg-light dark:bg-black;
+  @apply w-screen h-screen overflow-hidden;
+  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+  transition: all 0.3s ease;
+}
+
+.dark .layout-page {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #134e4a 100%);
 }
 
 .layout-main {
-  @apply w-full h-full relative  text-gray-900 dark:text-white;
+  @apply w-full h-full relative;
+  color: var(--text-color);
 }
 
 .layout-main-page {

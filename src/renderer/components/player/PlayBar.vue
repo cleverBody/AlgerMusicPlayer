@@ -413,13 +413,15 @@ const openPlayListDrawer = () => {
 
 .music-play-bar {
   @apply h-20 w-full absolute bottom-0 left-0 flex items-center box-border px-6 py-2 pt-3;
-  @apply bg-light dark:bg-dark shadow-2xl shadow-gray-300;
+  @apply bg-white/95 dark:bg-dark-100/95 backdrop-blur-md;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 212, 170, 0.2);
   z-index: 9999;
   animation-duration: 0.5s !important;
 
   &.play-bar-opcity {
     @apply bg-transparent !important;
-    box-shadow: 0 0 20px 5px #0000001d;
+    box-shadow: 0 0 20px 5px rgba(0, 212, 170, 0.1);
   }
 
   &.animate__slideOutDown {
@@ -432,11 +434,11 @@ const openPlayListDrawer = () => {
     @apply ml-4;
 
     &-title {
-      @apply text-base;
+      @apply text-base font-medium text-neutral-800 dark:text-neutral-100;
     }
 
     &-name {
-      @apply text-xs mt-1 opacity-80;
+      @apply text-xs mt-1 opacity-80 text-neutral-600 dark:text-neutral-400;
     }
   }
 }
@@ -449,13 +451,13 @@ const openPlayListDrawer = () => {
   @apply mx-6 flex-1 flex justify-center;
 
   .iconfont {
-    @apply text-2xl transition;
-    @apply hover:text-green-500;
+    @apply text-2xl transition-all duration-200 text-neutral-600 dark:text-neutral-400;
+    @apply hover:text-primary hover:scale-105;
   }
 
   .icon {
-    @apply text-3xl;
-    @apply hover:text-green-500;
+    @apply text-3xl transition-all duration-200 text-neutral-600 dark:text-neutral-400;
+    @apply hover:text-primary hover:scale-105;
   }
 
   @apply flex items-center;
@@ -465,8 +467,10 @@ const openPlayListDrawer = () => {
   }
 
   &-play {
-    @apply flex justify-center items-center w-20 h-12 rounded-full mx-4 transition text-gray-500;
-    @apply bg-gray-100 bg-opacity-60 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gray-200;
+    @apply flex justify-center items-center w-20 h-12 rounded-full mx-4 transition-all duration-200;
+    @apply bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400;
+    @apply hover:bg-primary-200 dark:hover:bg-primary-900/50 hover:scale-105;
+    box-shadow: 0 2px 8px rgba(0, 212, 170, 0.2);
   }
 }
 
@@ -482,19 +486,20 @@ const openPlayListDrawer = () => {
   }
 
   .iconfont {
-    @apply text-2xl transition;
-    @apply hover:text-green-500;
+    @apply text-2xl transition-all duration-200 text-neutral-600 dark:text-neutral-400;
+    @apply hover:text-primary hover:scale-105;
   }
 
   .volume-slider {
     @apply absolute opacity-0 invisible transition-all duration-300 bottom-[30px] left-1/2 -translate-x-1/2 h-[180px] px-2 py-4 rounded-xl;
-    @apply bg-light dark:bg-dark-200;
-    @apply border border-gray-200 dark:border-gray-700;
+    @apply bg-white/95 dark:bg-dark-200/95 backdrop-blur-md;
+    @apply border border-primary-200 dark:border-primary-700;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     
     .volume-percentage {
-      @apply absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium bg-light dark:bg-dark-200 px-2 py-1 rounded-md;
-      @apply border border-gray-200 dark:border-gray-700;
-      @apply text-gray-800 dark:text-white;
+      @apply absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium bg-primary-100 dark:bg-primary-800 px-2 py-1 rounded-md;
+      @apply border border-primary-200 dark:border-primary-700;
+      @apply text-primary-800 dark:text-primary-200;
       white-space: nowrap;
     }
   }
@@ -504,8 +509,8 @@ const openPlayListDrawer = () => {
   @apply flex items-center;
 
   .iconfont {
-    @apply text-2xl transition cursor-pointer mx-3;
-    @apply hover:text-green-500;
+    @apply text-2xl transition-all duration-200 cursor-pointer mx-3 text-neutral-600 dark:text-neutral-400;
+    @apply hover:text-primary hover:scale-105;
   }
 }
 
@@ -730,7 +735,7 @@ const openPlayListDrawer = () => {
 
 
 .playback-rate-badge {
-  @apply ml-2 px-1.5 h-4 flex items-center text-xs rounded bg-green-500 bg-opacity-15 text-green-600 dark:text-green-400;
+  @apply ml-2 px-1.5 h-4 flex items-center text-xs rounded bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300;
   font-weight: 500;
   vertical-align: 1px;
 }

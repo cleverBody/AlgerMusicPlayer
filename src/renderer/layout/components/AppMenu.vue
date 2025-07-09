@@ -4,7 +4,19 @@
     <div class="app-menu" :class="{ 'app-menu-expanded': isText }">
       <div class="app-menu-header">
         <div class="app-menu-logo" @click="isText = !isText">
-          <img :src="icon" class="w-9 h-9" alt="logo" />
+          <!-- 新的音乐主题图标 -->
+          <div class="modern-music-logo">
+            <div class="music-note">
+              <div class="note-head"></div>
+              <div class="note-stem"></div>
+              <div class="note-flag"></div>
+            </div>
+            <div class="sound-waves">
+              <div class="wave wave-1"></div>
+              <div class="wave wave-2"></div>
+              <div class="wave wave-3"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="app-menu-list">
@@ -13,7 +25,7 @@
             <template #trigger>
               <router-link class="app-menu-item-link" :to="item.path">
                 <i class="iconfont app-menu-item-icon" :style="iconStyle(index)" :class="item.meta.icon"></i>
-                <span v-if="isText" class="app-menu-item-text ml-3" :class="isChecked(index) ? 'text-green-500' : ''">{{ t(item.meta.title) }}</span>
+                <span v-if="isText" class="app-menu-item-text ml-3" :class="isChecked(index) ? 'text-primary' : ''">{{ t(item.meta.title) }}</span>
               </router-link>
             </template>
             <div v-if="!isText">{{ t(item.meta.title) }}</div>
@@ -29,7 +41,6 @@ import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import icon from '@/assets/icon.png';
 import { isMobile } from '@/utils';
 
 const props = defineProps({
@@ -43,7 +54,7 @@ const props = defineProps({
   },
   selectColor: {
     type: String,
-    default: '#10B981'
+    default: '#00d4aa'
   },
   menus: {
     type: Array as any,
@@ -86,7 +97,7 @@ const isText = ref(false);
   @apply w-[160px];
 
   .app-menu-item {
-    @apply hover:bg-gray-100 dark:hover:bg-gray-800 rounded mr-4;
+    @apply hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg mr-4 transition-all duration-200;
   }
 }
 
@@ -104,10 +115,13 @@ const isText = ref(false);
 }
 
 .app-menu-item-icon {
-  @apply transition-all duration-200 text-gray-500 dark:text-gray-400;
+  @apply transition-all duration-300 text-neutral-500 dark:text-neutral-400;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 
   &:hover {
-    @apply text-green-500 scale-105 !important;
+    color: #00d4aa !important;
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 212, 170, 0.4));
   }
 }
 
@@ -119,7 +133,7 @@ const isText = ref(false);
     bottom: 0;
     left: 0;
     z-index: 99999;
-    @apply bg-light dark:bg-black border-none border-gray-200 dark:border-gray-700;
+    @apply bg-white/90 dark:bg-dark-100/90 backdrop-blur-md border-t border-primary-200 dark:border-primary-700;
 
     &-header {
       display: none;
@@ -141,6 +155,96 @@ const isText = ref(false);
     &-expanded {
       @apply w-full;
     }
+  }
+}
+
+/* 现代音乐Logo样式 */
+.modern-music-logo {
+  @apply w-9 h-9 relative flex items-center justify-center cursor-pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 12px rgba(0, 212, 170, 0.5));
+  }
+}
+
+.music-note {
+  @apply relative;
+  width: 20px;
+  height: 24px;
+  
+  .note-head {
+    @apply absolute bottom-0 left-0;
+    width: 8px;
+    height: 6px;
+    background: linear-gradient(135deg, #00d4aa, #33e2c0);
+    border-radius: 50%;
+    transform: rotate(-20deg);
+    box-shadow: 0 2px 4px rgba(0, 212, 170, 0.3);
+  }
+  
+  .note-stem {
+    @apply absolute;
+    width: 2px;
+    height: 16px;
+    background: linear-gradient(180deg, #00d4aa, #00a688);
+    left: 6px;
+    bottom: 4px;
+    border-radius: 1px;
+  }
+  
+  .note-flag {
+    @apply absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+    right: 0;
+    top: 2px;
+    border-radius: 0 4px 4px 0;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 60%);
+  }
+}
+
+.sound-waves {
+  @apply absolute -right-1 top-1/2;
+  transform: translateY(-50%);
+  
+  .wave {
+    @apply absolute;
+    width: 2px;
+    background: linear-gradient(180deg, #f59e0b, #fbbf24);
+    border-radius: 1px;
+    animation: wave-pulse 1.5s ease-in-out infinite;
+    
+    &.wave-1 {
+      height: 4px;
+      right: 0;
+      animation-delay: 0s;
+    }
+    
+    &.wave-2 {
+      height: 8px;
+      right: 4px;
+      animation-delay: 0.2s;
+    }
+    
+    &.wave-3 {
+      height: 6px;
+      right: 8px;
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes wave-pulse {
+  0%, 100% {
+    transform: scaleY(0.5);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
   }
 }
 </style>

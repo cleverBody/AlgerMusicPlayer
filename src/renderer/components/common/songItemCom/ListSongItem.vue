@@ -37,14 +37,14 @@
     <template #content>
       <div class="song-item-content">
         <div class="song-item-content-wrapper">
-          <n-ellipsis class="song-item-content-title text-ellipsis" line-clamp="1" :class="{ 'text-green-500': isPlaying }">
+          <n-ellipsis class="song-item-content-title text-ellipsis" line-clamp="1" :class="{ 'text-primary': isPlaying }">
             {{ item.name }}
           </n-ellipsis>
           <div class="song-item-content-divider">-</div>
           <n-ellipsis class="song-item-content-name text-ellipsis" line-clamp="1">
             <template v-for="(artist, index) in artists" :key="index">
               <span
-                class="cursor-pointer hover:text-green-500"
+                class="cursor-pointer hover:text-primary"
                 @click.stop="onArtistClick(artist.id)"
                 >{{ artist.name }}</span
               >
@@ -66,8 +66,8 @@
           ></i>
         </div>
         <div
-          class="song-item-operating-play bg-gray-300 dark:bg-gray-800 animate__animated"
-          :class="{ 'bg-green-600': isPlaying, 'animate__flipInY': playLoading }"
+          class="song-item-operating-play bg-neutral-300 dark:bg-neutral-800 animate__animated"
+          :class="{ 'bg-primary': isPlaying, 'animate__flipInY': playLoading }"
           @click="onPlayMusic"
         >
           <i v-if="isPlaying && play" class="iconfont icon-stop"></i>
@@ -137,10 +137,10 @@ const onPlayMusic = () => {
 
 <style lang="scss" scoped>
 .list-song-item {
-  @apply p-2 rounded-lg mb-2 border dark:border-gray-800 border-gray-200;
+  @apply p-2 rounded-lg mb-2 border dark:border-neutral-800 border-neutral-200;
 
   &:hover {
-    @apply bg-gray-50 dark:bg-gray-800;
+    @apply bg-neutral-50 dark:bg-neutral-800;
   }
 
   .song-item-img {
@@ -155,15 +155,15 @@ const onPlayMusic = () => {
     }
 
     &-title {
-      @apply flex-shrink-0 max-w-[45%] text-gray-900 dark:text-white;
+      @apply flex-shrink-0 max-w-[45%] text-neutral-900 dark:text-white;
     }
 
     &-divider {
-      @apply mx-2 text-gray-500 dark:text-gray-400;
+      @apply mx-2 text-neutral-500 dark:text-neutral-400;
     }
 
     &-name {
-      @apply flex-1 min-w-0 text-gray-500 dark:text-gray-400;
+      @apply flex-1 min-w-0 text-neutral-500 dark:text-neutral-400;
     }
   }
 
@@ -174,7 +174,7 @@ const onPlayMusic = () => {
       @apply cursor-pointer hover:scale-110 transition-transform;
 
       .iconfont {
-        @apply text-base text-gray-500 dark:text-gray-400 hover:text-red-500;
+        @apply text-base text-neutral-500 dark:text-neutral-400 hover:text-red-500;
       }
     }
 
